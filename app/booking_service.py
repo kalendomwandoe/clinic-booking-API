@@ -12,6 +12,7 @@ def validate_slot(db: Session, doctor: Doctor, start_time: datetime, exclude_app
 
     end_time = start_time + timedelta(minutes=SLOT_MINUTES)
 
+
     if start_time.time() < doctor.working_hours_start or end_time.time() > doctor.working_hours_end:
         raise HTTPException(
             status_code=400,
